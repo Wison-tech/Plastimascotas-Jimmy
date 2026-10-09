@@ -158,3 +158,10 @@
 .spa__sticker { left: 6%; bottom: 8%; z-index: 2; box-shadow: var(--shadow); }
 .form-card .group__label { letter-spacing: .08em; font-weight: 700; color: var(--ink); margin-top: 16px; }
 .field { background: #fff6ea; }
+@media (max-width: 400px) {
+  .brand { gap: 8px; }
+  .brand img { width: 36px; height: 36px; }
+  .brand__text strong { font-size: 18px; }
+  .header__inner { gap: 8px; }
+  .hero__eyebrow { font-size: 12px; padding: 6px 12px; }
+}
