@@ -75,3 +75,8 @@ Las fotos de mascotas son de dominio público (CC0), tomadas de Wikimedia Common
 - *Princess*
 - *Puppy playing with a toy*
 - *Ginger long-haired cat*
+- *Caleb Fisher 2015*
+- *Wide-eyed tiger cat*
+- *Transparent jack russell puppy dog*
+
+Las tres últimas se recortaron sin fondo (rembg) para el efecto 3D de la portada: `hero-perro.webp`, `peek-gato.webp` y `peek-perro.webp`.

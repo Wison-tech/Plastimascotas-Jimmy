@@ -47,10 +47,9 @@ export function Hero({ onOpen, onShopAll }: { onOpen: (p: Product) => void; onSh
             </button>
           )}
 
+          {/* Recorte sin fondo: el panel azul de abajo le tapa el pecho y parece que se asoma. */}
           <figure className="hero__photo">
-            <div className="hero__photo-frame">
-              <img src="/img/hero-perro.jpg" alt="Un golden retriever feliz" width={780} height={853} />
-            </div>
+            <img src="/img/hero-perro.webp" alt="Un golden retriever" width={620} height={762} />
             <figcaption className="hero__photo-tag">Al por mayor y al detal</figcaption>
           </figure>
 
@@ -66,12 +65,12 @@ export function Hero({ onOpen, onShopAll }: { onOpen: (p: Product) => void; onSh
             <span className="hero__card-price" style={{ fontSize: 17 }}>Agenda tu cita</span>
           </a>
 
-          <div className="hero__panel hero__panel--a">
-            <span className="hero__peek">
-              <img src="/img/pet-perro.jpg" alt="" width={560} height={560} loading="lazy" />
-            </span>
-            <strong>{settings.deliveryNote || 'Domicilios'}</strong>
-            <span>Pide desde tu celular y te lo llevamos a casa.</span>
+          <div className="hero__slot hero__slot--a">
+            <img className="hero__pet" src="/img/peek-perro.webp" alt="" width={460} height={460} />
+            <div className="hero__panel">
+              <strong>{settings.deliveryNote || 'Domicilios'}</strong>
+              <span>Pide desde tu celular y te lo llevamos a casa.</span>
+            </div>
           </div>
 
           <div className="hero__cta">
@@ -89,12 +88,12 @@ export function Hero({ onOpen, onShopAll }: { onOpen: (p: Product) => void; onSh
             </button>
           </div>
 
-          <div className="hero__panel hero__panel--c">
-            <span className="hero__peek">
-              <img src="/img/pet-gato.jpg" alt="" width={560} height={560} loading="lazy" />
-            </span>
-            <strong>Distribuidores de arena</strong>
-            <span>Arena para gatos al por mayor y al detal.</span>
+          <div className="hero__slot hero__slot--c">
+            <img className="hero__pet" src="/img/peek-gato.webp" alt="" width={480} height={364} />
+            <div className="hero__panel">
+              <strong>Distribuidores de arena</strong>
+              <span>Arena para gatos al por mayor y al detal.</span>
+            </div>
           </div>
         </div>
       </div>
