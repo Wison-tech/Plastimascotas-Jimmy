@@ -2,6 +2,7 @@ import { lazy, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import './styles.css';
+import './theme.css';
 
 // El panel se descarga aparte: los clientes nunca bajan su código.
 const AdminApp = lazy(() => import('./admin/AdminApp'));

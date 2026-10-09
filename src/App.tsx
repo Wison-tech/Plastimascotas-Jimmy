@@ -3,6 +3,7 @@ import { CartSheet } from './components/CartSheet';
 import { Explore } from './components/Explore';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { Services } from './components/Services';
 import { ArrowRightIcon, CheckIcon, WhatsAppIcon } from './components/Icons';
 import { LastOrder } from './components/LastOrder';
 import { ProductSheet } from './components/ProductSheet';
@@ -85,6 +86,7 @@ function Storefront({ catalog, refresh }: { catalog: Catalog; refresh: () => voi
       <main>
         {last && <LastOrder order={last} tracked={live} onRepeat={repeat} />}
         <Hero onOpen={setProduct} onShopAll={() => showOnly({})} />
+        <Services onShopAll={() => showOnly({})} onWholesale={() => showOnly({ wholesale: true })} />
         <Explore
           pet={filters.pet}
           category={filters.category}

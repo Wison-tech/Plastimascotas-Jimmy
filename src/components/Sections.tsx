@@ -336,22 +336,64 @@ export function Visit() {
 // Pie
 // ---------------------------------------------------------------------
 export function Footer() {
-  const { settings } = useCatalog();
+  const { settings, categories } = useCatalog();
+  const place = [settings.address, settings.city].filter(Boolean).join(', ');
   return (
     <footer className="footer">
       <div className="wrap">
-        <Brand name={settings.name} />
-        <p className="footer__claim">{settings.claim}. Productos y comida al por mayor y al detal.</p>
-        <nav className="footer__links" aria-label="Secciones">
-          {NAV.map((n) => (
-            <a key={n.href} href={n.href}>
-              {n.label}
-            </a>
-          ))}
-        </nav>
+        <div className="footer__grid">
+          <div>
+            <Brand name={settings.name} />
+            <p className="footer__claim">{settings.claim}. Productos y comida al por mayor y al detal, con domicilio.</p>
+          </div>
+          <div>
+            <h4>Tienda</h4>
+            <ul>
+              {categories.slice(0, 5).map((c) => (
+                <li key={c.id}>
+                  <a href="#tienda">{c.name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4>Secciones</h4>
+            <ul>
+              {NAV.map((n) => (
+                <li key={n.href}>
+                  <a href={n.href}>{n.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4>Contacto</h4>
+            <ul>
+              {place && <li>{place}</li>}
+              {settings.phones.map((p) => (
+                <li key={p}>
+                  <a href={`tel:+57${p.replace(/\D/g, '')}`}>{p}</a>
+                </li>
+              ))}
+              {settings.instagram && (
+                <li>
+                  <a href={settings.instagram.startsWith('http') ? settings.instagram : `https://instagram.com/${settings.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer">
+                    Instagram
+                  </a>
+                </li>
+              )}
+              {settings.facebook && (
+                <li>
+                  <a href={settings.facebook} target="_blank" rel="noopener noreferrer">
+                    Facebook
+                  </a>
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
         <p className="footer__small">
-          © {new Date().getFullYear()} {settings.name}
-          {settings.city ? ` · ${settings.city}` : ''} · <a href="/admin">Administrar</a>
+          © {new Date().getFullYear()} {settings.name} · <a href="/admin">Administrar</a>
         </p>
       </div>
     </footer>

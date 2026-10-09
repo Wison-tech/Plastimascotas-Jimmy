@@ -1,0 +1,160 @@
+/* =====================================================================
+   Diseño cálido "petshop" (naranja/amarillo de la marca).
+   Se carga después de styles.css y ajusta la portada y las secciones.
+   ===================================================================== */
+.btn { font-family: var(--display); font-weight: 700; font-size: 16px; letter-spacing: 0; border-radius: 14px; }
+.btn--orange { background: var(--grad); color: #fff; box-shadow: 0 14px 26px -14px rgb(247 147 30 / .85); }
+.btn--orange:hover:not(:disabled) { background: var(--grad); filter: brightness(1.04); transform: translateY(-1px); }
+.btn svg { width: 19px; height: 19px; }
+.cart-pill { background: var(--grad); box-shadow: 0 10px 20px -12px rgb(247 147 30 / .9); }
+.cart-pill .badge-count { background: rgb(255 255 255 / .28); }
+.brand__text strong { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: 0; }
+.nav a:hover { color: var(--orange) !important; background: transparent !important; }
+
+/* ---------- Portada ---------- */
+.hero { padding: 24px 0 36px; background: radial-gradient(1200px 520px at 80% 0%, #fff0d8 0%, rgb(255 240 216 / 0) 70%); }
+.hero__inner { display: grid; gap: 28px; align-items: center; }
+.hero__copy { text-align: center; }
+.hero__eyebrow {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px;
+  background: #fff; box-shadow: var(--shadow-soft); color: var(--muted); font-weight: 700; font-size: 13px;
+}
+.hero__eyebrow svg { width: 18px; height: 18px; color: var(--orange); stroke-width: 1.8 !important; }
+.hero__title { margin-top: 16px; font-family: var(--display); font-weight: 800; font-size: clamp(40px, 11vw, 76px); line-height: .98; letter-spacing: -.015em; color: var(--ink); }
+.hero__title em { font-style: normal; display: block; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: .06em; }
+.hero__lead { margin: 16px auto 0; max-width: 46ch; color: var(--muted); font-size: 16.5px; line-height: 1.6; }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px; }
+.hero__perks { list-style: none; padding: 0; margin: 26px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.hero__perks li { display: flex; flex-direction: column; align-items: center; gap: 8px; font-weight: 700; font-size: 12.5px; line-height: 1.25; color: var(--ink); }
+.hero__perks span { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border-radius: 14px; background: #fff; color: var(--orange); box-shadow: var(--shadow-soft); }
+.hero__perks svg { width: 22px; height: 22px; }
+
+.hero__art { position: relative; width: min(100%, 440px); justify-self: center; aspect-ratio: 1 / 1.08; }
+/* Rectángulo redondeado naranja detrás del círculo (arriba a la derecha), como en la referencia */
+.hero__shape { position: absolute; right: 2%; top: 14%; width: 46%; height: 62%; border-radius: 28px 28px 28px 160px; background: var(--grad); opacity: .95; }
+.hero__circle {
+  position: absolute; left: 4%; right: 4%; bottom: 0; aspect-ratio: 1; border-radius: 50%;
+  background: var(--grad); box-shadow: 0 0 0 12px #fff, 0 30px 60px -24px rgb(181 98 0 / .55);
+}
+/* El perro se ve completo de la mitad del círculo hacia arriba y, abajo, solo dentro del círculo */
+.hero__pet {
+  position: absolute; left: 4%; right: 4%; bottom: 0; height: 120%; display: flex; align-items: flex-end; justify-content: center;
+  -webkit-mask-image: radial-gradient(circle closest-side at 50% 58.4%, #000 99.5%, transparent 100%), linear-gradient(#000 58.4%, transparent 58.4%);
+  mask-image: radial-gradient(circle closest-side at 50% 58.4%, #000 99.5%, transparent 100%), linear-gradient(#000 58.4%, transparent 58.4%);
+}
+.hero__pet img { width: 100%; height: auto; filter: drop-shadow(0 18px 24px rgb(120 60 0 / .25)); }
+
+.hero__chip {
+  position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; border: 0; border-radius: 16px;
+  background: #fff; box-shadow: 0 16px 36px -18px rgb(35 38 47 / .35); text-align: left; text-decoration: none; color: var(--ink); max-width: 230px;
+  transition: transform .2s var(--ease);
+}
+.hero__chip:hover { transform: translateY(-2px); }
+.hero__chip--product { left: -2%; bottom: 10%; }
+.hero__chip--spa { right: -2%; top: 8%; }
+.hero__chip-img { width: 48px; height: 48px; flex: none; border-radius: 12px; overflow: hidden; display: grid; }
+.hero__chip-img .ph svg { width: 26px; height: 26px; }
+.hero__chip-icon { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 12px; background: var(--yellow-soft); color: var(--orange); }
+.hero__chip-icon svg { width: 20px; height: 20px; }
+.hero__chip-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.2; }
+.hero__chip-text small { font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); }
+.hero__chip-text strong { font-size: 13.5px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hero__chip-text em { font-style: normal; font-family: var(--display); font-weight: 800; font-size: 17px; }
+
+/* ---------- Servicios ---------- */
+.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px 14px; padding-top: 26px; }
+.service {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 40px 14px 20px; border: 0; border-radius: var(--radius);
+  background: #fff; box-shadow: var(--shadow-soft); text-align: center; color: var(--ink); transition: transform .25s var(--ease), box-shadow .25s;
+}
+.service:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.service__icon {
+  position: absolute; top: -24px; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; display: grid; place-items: center;
+  border-radius: 16px 16px 16px 4px; background: var(--grad); color: #fff; box-shadow: 0 0 0 5px #fff, 0 10px 18px -8px rgb(247 147 30 / .8);
+}
+.service__icon svg { width: 24px; height: 24px; stroke-width: 1.9 !important; }
+.service strong { font-family: var(--display); font-weight: 700; font-size: 18px; line-height: 1.15; }
+.service__text { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.service.is-featured { background: var(--grad); color: #fff; box-shadow: 0 24px 40px -22px rgb(247 147 30 / .9); }
+.service.is-featured .service__text { color: rgb(255 255 255 / .92); }
+.service.is-featured .service__icon { background: #fff; color: var(--orange); box-shadow: 0 0 0 5px rgb(255 255 255 / .35); }
+
+/* ---------- Ajustes cálidos al resto ---------- */
+.section__head h2 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 5vw, 46px); color: var(--ink); letter-spacing: -.01em; }
+.section__head h2 em { font-weight: 800; }
+.kicker { color: var(--orange); font-weight: 800; }
+.pet { border: 0; box-shadow: var(--shadow-soft); }
+.pet__img { box-shadow: 0 0 0 5px #fff, 0 0 0 8px #ffd99c !important; }
+.pet.is-active { box-shadow: inset 0 0 0 2px var(--orange), var(--shadow-soft); }
+.pet strong { color: var(--ink); font-size: 19px; }
+.cat { box-shadow: var(--shadow-soft); }
+.cat__icon { background: var(--yellow-soft); color: var(--orange); border-radius: 14px; }
+.cat.is-active { box-shadow: inset 0 0 0 2px var(--orange); }
+.pcard { border-radius: 20px; box-shadow: var(--shadow-soft); }
+.pcard:hover { box-shadow: var(--shadow); }
+.ph { background: #fff6ea; color: #e9a24b; }
+.add-btn { background: var(--grad); box-shadow: 0 10px 18px -10px rgb(247 147 30 / .9); }
+.price strong { font-family: var(--display); font-weight: 800; font-size: 21px; }
+.pcard__brand { color: var(--orange); font-weight: 800; }
+
+.wholesale { background: var(--grad); color: #fff; box-shadow: 0 30px 60px -30px rgb(247 147 30 / .8); }
+.wholesale h2 em { color: var(--ink); }
+.wholesale p { color: rgb(255 255 255 / .92); }
+.wholesale .kicker { color: #fff !important; }
+.wholesale__list li { background: rgb(255 255 255 / .18); color: #fff; font-weight: 700; }
+.wholesale__list li span { background: #fff; color: var(--orange); }
+.wholesale .btn--orange { background: var(--ink); box-shadow: none; }
+
+.spa__media { position: relative; display: grid; place-items: center; padding: 6% 0; }
+.spa__media::before { content: ""; position: absolute; width: 88%; aspect-ratio: 1; border-radius: 50%; background: var(--grad); top: 0; right: 0; }
+.spa__media img { position: relative; width: 80%; aspect-ratio: 1; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 10px #fff, var(--shadow); }
+.form-card { border: 0; box-shadow: var(--shadow-soft); }
+.seg button.is-active { color: var(--orange); }
+
+.how__step { border: 0; box-shadow: var(--shadow-soft); }
+.how__num { background: var(--grad); color: #fff; border: 0; border-radius: 14px; font-family: var(--display); font-weight: 800; }
+.pays span { border: 0; box-shadow: var(--shadow-soft); }
+.pays svg { color: var(--orange); }
+.brands span { box-shadow: var(--shadow-soft); color: var(--ink); font-family: var(--display); font-weight: 700; font-size: 18px; }
+.visit__card { border: 0; box-shadow: var(--shadow-soft); }
+.visit__row > span { background: var(--yellow-soft); color: var(--orange); }
+.visit__map { background: var(--grad); }
+.visit__map strong { color: #fff; }
+.visit__map span { color: var(--ink); }
+
+/* ---------- Pie en columnas ---------- */
+.footer { background: #fff; color: var(--muted); text-align: left; border-top: 1px solid var(--line); }
+.footer__grid { display: grid; gap: 26px; }
+.footer .brand { justify-content: flex-start; }
+.footer .brand__text strong { color: var(--ink); }
+.footer .brand__text span { color: var(--muted); }
+.footer h4 { font-family: var(--display); font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 10px; }
+.footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 14px; }
+.footer a { text-decoration: none; color: var(--muted); }
+.footer a:hover { color: var(--orange); }
+.footer__claim { margin-top: 12px; max-width: 32ch; }
+.footer__small { margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12.5px; text-align: center; }
+.footer__small a { color: var(--muted); }
+
+@media (min-width: 640px) {
+  .footer__grid { grid-template-columns: 1.4fr 1fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .hero { padding: 10px 0 40px; min-height: calc(100svh - var(--header)); display: flex; align-items: center; }
+  .hero__inner { grid-template-columns: 1.02fr 1fr; gap: 40px; }
+  .hero__copy { text-align: left; }
+  .hero__title { font-size: clamp(56px, 5.6vw, 84px); }
+  .hero__lead { margin-left: 0; }
+  .hero__actions { justify-content: flex-start; }
+  .hero__perks { max-width: 560px; grid-template-columns: repeat(3, auto); justify-content: start; gap: 22px; }
+  .hero__perks li { flex-direction: row; text-align: left; font-size: 13.5px; }
+  .hero__art { width: min(100%, calc((100svh - var(--header) - 80px) / 1.08), 540px); }
+  .services { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; padding-top: 40px; }
+  .service.is-featured { transform: translateY(-14px); }
+  .service.is-featured:hover { transform: translateY(-18px); }
+  .footer__grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
+}
+.brand img { border-radius: 0; }
+.spa__sticker { left: 6%; bottom: 8%; z-index: 2; box-shadow: var(--shadow); }
+.form-card .group__label { letter-spacing: .08em; font-weight: 700; color: var(--ink); margin-top: 16px; }
+.field { background: #fff6ea; }
