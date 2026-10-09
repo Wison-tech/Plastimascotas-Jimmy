@@ -165,3 +165,8 @@
   .header__inner { gap: 8px; }
   .hero__eyebrow { font-size: 12px; padding: 6px 12px; }
 }
+/* Celular/tableta: la etiqueta del spa baja para no tapar los ojos del perro */
+@media (max-width: 1023px) {
+  .hero__chip--spa { top: 50%; right: -3%; }
+  .hero__chip--product { bottom: 4%; }
+}
