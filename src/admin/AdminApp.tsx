@@ -78,7 +78,7 @@ function AuthShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="a-auth">
       <div className="a-auth__card">
-        <img src="/img/logo.svg" alt="" width={84} height={84} />
+        <img src="/img/logo.webp" alt="" width={84} height={84} />
         <h1>Panel Plastimascotas</h1>
         {children}
         <a href="/" className="a-link">
@@ -279,7 +279,7 @@ function Panel({ email }: { email: string }) {
           <span className="a-burger" aria-hidden="true" />
         </button>
         <span className="a-mobilebar__title">
-          <img src="/img/logo.svg" alt="" width={30} height={30} />
+          <img src="/img/logo.webp" alt="" width={30} height={30} />
           {current.label}
         </span>
         <button
@@ -299,7 +299,7 @@ function Panel({ email }: { email: string }) {
           ✕
         </button>
         <a href="/" className="a-brand" title="Ver la tienda">
-          <img src="/img/logo.svg" alt="" width={40} height={40} />
+          <img src="/img/logo.webp" alt="" width={40} height={40} />
           <span>
             <strong>Plastimascotas</strong>
             <small>Panel</small>

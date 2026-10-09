@@ -170,3 +170,7 @@
   .hero__chip--spa { top: 50%; right: -3%; }
   .hero__chip--product { bottom: 4%; }
 }
+/* Logo real de la tienda (círculo) */
+.brand img { width: 52px; height: 52px; filter: drop-shadow(0 4px 8px rgb(35 38 47 / .15)); }
+@media (max-width: 400px) { .brand img { width: 42px; height: 42px; } }
+@media (min-width: 1024px) { .brand img { width: 60px; height: 60px; } }

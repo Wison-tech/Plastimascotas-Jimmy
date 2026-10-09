@@ -213,7 +213,7 @@ export function CartSheet(props: Props) {
             <BackIcon />
           </button>
         ) : (
-          <img src="/img/logo.svg" alt="" width={40} height={40} />
+          <img src="/img/logo.webp" alt="" width={40} height={40} />
         )}
         <h3 id="cartTitle">{title}</h3>
         <button className="round-btn" type="button" onClick={onClose} aria-label="Cerrar">

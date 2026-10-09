@@ -4,7 +4,7 @@
 const CACHE = 'plastimascotas-v1';
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE).then((c) => c.addAll(['/', '/img/logo.svg'])));
+  event.waitUntil(caches.open(CACHE).then((c) => c.addAll(['/', '/img/logo.webp'])));
   self.skipWaiting();
 });
 

@@ -27,7 +27,7 @@ export function Brand({ name }: { name: string }) {
   const [main, ...rest] = name.split(' ');
   return (
     <a className="brand" href="#inicio" aria-label={`${name}, inicio`}>
-      <img src="/img/logo.svg" alt="" width={44} height={44} />
+      <img src="/img/logo.webp" alt="" width={44} height={44} />
       <span className="brand__text">
         <strong>{main}</strong>
         <span>{rest.length ? `${rest.join(' ')} · Petshop` : 'Petshop'}</span>
