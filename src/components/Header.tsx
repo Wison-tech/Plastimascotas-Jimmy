@@ -106,7 +106,6 @@ export function Header({ count, total, favCount, onCart, onSearch, onFavs }: Pro
           </div>
           {NAV.map((n) => (
             <a key={n.href} className="drawer__link" href={n.href} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
-              <span aria-hidden="true">{n.icon}</span>
               {n.label}
             </a>
           ))}

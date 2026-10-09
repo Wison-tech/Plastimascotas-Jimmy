@@ -1,7 +1,8 @@
 import { useDeferredValue, useEffect, useMemo, useState } from 'react';
-import { minPrice, PET_ICON, PET_LABEL, productInStock, useCatalog, type Pet, type Product } from '../data/catalog';
+import { minPrice, PET_LABEL, productInStock, useCatalog, type Pet, type Product } from '../data/catalog';
 import { normalize } from '../lib/format';
-import { CloseIcon, PawIcon, SearchIcon } from './Icons';
+import { CategoryIcon } from './CategoryIcon';
+import { CloseIcon, SearchIcon } from './Icons';
 import { ProductCard } from './ProductCard';
 
 export type Sort = 'relevancia' | 'menor' | 'mayor' | 'nombre';
@@ -70,9 +71,7 @@ export function Shop({ filters, onFilters, searchRef, favIds, qtyOf, onAdd, onSe
     <section className="section" id="tienda" aria-labelledby="shopTitle">
       <div className="wrap">
         <div className="section__head">
-          <span className="kicker">
-            <PawIcon /> Tienda
-          </span>
+          <span className="kicker">Tienda</span>
           <h2 id="shopTitle">
             Todo en un <em>solo lugar</em>
           </h2>
@@ -108,7 +107,7 @@ export function Shop({ filters, onFilters, searchRef, favIds, qtyOf, onAdd, onSe
               </button>
               {pets.map((p) => (
                 <button key={p} type="button" className={`chip ${filters.pet === p ? 'is-active' : ''}`} onClick={() => onFilters({ pet: filters.pet === p ? null : p })}>
-                  <span aria-hidden="true">{PET_ICON[p]}</span> {PET_LABEL[p]}
+                  {PET_LABEL[p]}
                 </button>
               ))}
               <button
@@ -117,7 +116,7 @@ export function Shop({ filters, onFilters, searchRef, favIds, qtyOf, onAdd, onSe
                 onClick={() => onFilters({ wholesale: !filters.wholesale })}
                 aria-pressed={filters.wholesale}
               >
-                📦 Por mayor
+                Por mayor
               </button>
               <button
                 type="button"
@@ -125,7 +124,7 @@ export function Shop({ filters, onFilters, searchRef, favIds, qtyOf, onAdd, onSe
                 onClick={() => onFilters({ onlyStock: !filters.onlyStock })}
                 aria-pressed={filters.onlyStock}
               >
-                ✅ Disponibles
+                Disponibles
               </button>
               {favIds.length > 0 && (
                 <button
@@ -134,7 +133,7 @@ export function Shop({ filters, onFilters, searchRef, favIds, qtyOf, onAdd, onSe
                   onClick={() => onFilters({ favs: !filters.favs })}
                   aria-pressed={filters.favs}
                 >
-                  ❤️ Favoritos <span className="chip__n">{favIds.length}</span>
+                  Favoritos <span className="chip__n">{favIds.length}</span>
                 </button>
               )}
             </div>
@@ -171,7 +170,9 @@ export function Shop({ filters, onFilters, searchRef, favIds, qtyOf, onAdd, onSe
 
         {category && (
           <div className="cat-banner">
-            <span aria-hidden="true">{category.icon}</span>
+            <span aria-hidden="true">
+              <CategoryIcon slug={category.id} />
+            </span>
             <div>
               <strong>{category.name}</strong>
               {category.description && <p>{category.description}</p>}

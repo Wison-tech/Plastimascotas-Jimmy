@@ -1,9 +1,9 @@
 import { minPrice, productInStock, useCatalog, type Product } from '../data/catalog';
 import { money } from '../lib/format';
-import { ArrowRightIcon, ArrowUpRightIcon, PawIcon } from './Icons';
+import { ArrowRightIcon, ArrowUpRightIcon } from './Icons';
 import { ProductImage } from './ProductImage';
 
-/** "Todo para tus mascotas" con una huella en la "o" de mascotas, como en el volante. */
+/** Resalta la palabra "mascotas" de la frase. */
 function Claim({ text }: { text: string }) {
   const i = text.toLowerCase().lastIndexOf('mascotas');
   if (i < 0) return <>{text}</>;
@@ -11,11 +11,7 @@ function Claim({ text }: { text: string }) {
   return (
     <>
       {text.slice(0, i)}
-      <em>
-        {word.slice(0, 4)}
-        <PawIcon className="paw-o" />
-        {word.slice(5)}
-      </em>
+      <em>{word}</em>
       {text.slice(i + 8)}
     </>
   );
@@ -28,10 +24,8 @@ export function Hero({ onOpen, onShopAll }: { onOpen: (p: Product) => void; onSh
   return (
     <section className="hero" id="inicio" aria-labelledby="heroTitle">
       <div className="wrap">
-        <h1 id="heroTitle" className="hero__title" aria-label={settings.claim}>
-          <span aria-hidden="true">
-            <Claim text={settings.claim} />
-          </span>
+        <h1 id="heroTitle" className="hero__title">
+          <Claim text={settings.claim} />
         </h1>
         <p className="hero__lead">
           Comida, accesorios, aseo y salud para perros, gatos, aves y pequeñas mascotas. Pides aquí y te lo confirmamos por
@@ -57,9 +51,7 @@ export function Hero({ onOpen, onShopAll }: { onOpen: (p: Product) => void; onSh
             <div className="hero__photo-frame">
               <img src="/img/hero-perro.jpg" alt="Un golden retriever feliz" width={780} height={853} />
             </div>
-            <figcaption className="hero__photo-tag">
-              <PawIcon /> Al por mayor y al detal
-            </figcaption>
+            <figcaption className="hero__photo-tag">Al por mayor y al detal</figcaption>
           </figure>
 
           <a className="hero__card hero__card--right" href="#spa">

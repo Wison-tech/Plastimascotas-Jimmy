@@ -48,7 +48,7 @@ export function CheckoutForm({ data, onChange, total, showErrors }: Props) {
       <div className="seg" role="radiogroup" aria-label="Tipo de entrega">
         {MODES.map((m) => (
           <button key={m.id} type="button" role="radio" aria-checked={data.mode === m.id} className={data.mode === m.id ? 'is-active' : ''} onClick={() => onChange({ mode: m.id })}>
-            <span aria-hidden="true">{m.icon}</span> {MODE_LABEL[m.id]}
+            {MODE_LABEL[m.id]}
           </button>
         ))}
       </div>

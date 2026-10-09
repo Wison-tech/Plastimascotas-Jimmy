@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { inStock, PET_ICON, PET_LABEL, priceFor, useCatalog, type Product } from '../data/catalog';
+import { inStock, PET_LABEL, priceFor, useCatalog, type Product } from '../data/catalog';
 import { maxFor } from '../hooks/useCart';
 import { money } from '../lib/format';
 import { CloseIcon, HeartIcon, MinusIcon, PlusIcon } from './Icons';
@@ -66,9 +66,7 @@ function Body({ product, onClose, qtyOf, onAdd, isFav, onFav }: Omit<Props, 'pro
         {product.pets.length > 0 && (
           <div className="psheet__pets">
             {product.pets.map((p) => (
-              <span key={p}>
-                {PET_ICON[p]} {PET_LABEL[p]}
-              </span>
+              <span key={p}>{PET_LABEL[p]}</span>
             ))}
           </div>
         )}

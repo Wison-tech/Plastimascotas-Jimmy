@@ -1,5 +1,5 @@
 import { PET_LABEL, useCatalog, type Pet } from '../data/catalog';
-import { PawIcon } from './Icons';
+import { CategoryIcon } from './CategoryIcon';
 
 const PET_PHOTO: Partial<Record<Pet, string>> = {
   perro: '/img/pet-perro.jpg',
@@ -26,9 +26,7 @@ export function Explore({ pet, category, onPet, onCategory }: Props) {
     <section className="section" id="explorar" aria-labelledby="exploreTitle">
       <div className="wrap">
         <div className="section__head">
-          <span className="kicker">
-            <PawIcon /> Compra por mascota
-          </span>
+          <span className="kicker">Compra por mascota</span>
           <h2 id="exploreTitle">
             ¿Para <em>quién</em> es?
           </h2>
@@ -58,7 +56,7 @@ export function Explore({ pet, category, onPet, onCategory }: Props) {
               onClick={() => onCategory(c.id)}
             >
               <span className="cat__icon" aria-hidden="true">
-                {c.icon}
+                <CategoryIcon slug={c.id} />
               </span>
               <span className="cat__text">
                 <strong>{c.name}</strong>

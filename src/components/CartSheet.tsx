@@ -15,7 +15,7 @@ import {
   type Checkout,
 } from '../lib/whatsapp';
 import { CheckoutForm } from './Checkout';
-import { BackIcon, CheckIcon, CloseIcon, MinusIcon, PlusIcon, RepeatIcon, TrashIcon, WhatsAppIcon } from './Icons';
+import { BackIcon, CheckIcon, CloseIcon, MinusIcon, PawIcon, PlusIcon, RepeatIcon, TrashIcon, WhatsAppIcon } from './Icons';
 import { ProductImage } from './ProductImage';
 import { Sheet } from './Sheet';
 
@@ -301,7 +301,7 @@ export function CartSheet(props: Props) {
         {step === 'cart' && lines.length === 0 && (
           <div className="cart__empty">
             <p className="cart__empty-icon" aria-hidden="true">
-              🐾
+              <PawIcon />
             </p>
             <p>Tu carrito está vacío. Toca el botón + de cualquier producto para empezar.</p>
             {history.length > 0 && (

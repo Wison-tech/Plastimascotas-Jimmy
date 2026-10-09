@@ -4,7 +4,8 @@ import { openStatus, prettyTime } from '../lib/hours';
 import { buildSpaMessage, openWhatsApp, whatsappUrl, type SpaRequest } from '../lib/whatsapp';
 import { Field } from './Checkout';
 import { Brand, NAV } from './Header';
-import { ArrowRightIcon, CardIcon, ClockIcon, PawIcon, PhoneIcon, PinIcon, SparkleIcon, TruckIcon, WhatsAppIcon } from './Icons';
+import { CategoryIcon } from './CategoryIcon';
+import { ArrowRightIcon, CardIcon, ClockIcon, PhoneIcon, PinIcon, WhatsAppIcon } from './Icons';
 
 // ---------------------------------------------------------------------
 // Por mayor
@@ -16,9 +17,7 @@ export function Wholesale({ onShowWholesale }: { onShowWholesale: () => void }) 
       <div className="wrap">
         <div className="wholesale">
           <div>
-            <span className="kicker" style={{ color: 'var(--yellow)' }}>
-              <PawIcon /> Al por mayor y al detal
-            </span>
+            <span className="kicker" style={{ color: 'var(--yellow)' }}>Al por mayor y al detal</span>
             <h2 id="wsTitle" style={{ marginTop: 8 }}>
               Somos <em>distribuidores</em> de arena para gatos
             </h2>
@@ -30,13 +29,13 @@ export function Wholesale({ onShowWholesale }: { onShowWholesale: () => void }) 
           <div style={{ display: 'grid', gap: 14, position: 'relative', zIndex: 1 }}>
             <ul className="wholesale__list">
               <li>
-                <span aria-hidden="true">🪣</span> Arena para gatos por bolsa o por bulto
+                <span aria-hidden="true"><CategoryIcon slug="arena" /></span> Arena para gatos por bolsa o por bulto
               </li>
               <li>
-                <span aria-hidden="true">🥣</span> Comida a granel por libra o por kilo
+                <span aria-hidden="true"><CategoryIcon slug="granel" /></span> Comida a granel por libra o por kilo
               </li>
               <li>
-                <span aria-hidden="true">🐶</span> Concentrados en bulto para perros y gatos
+                <span aria-hidden="true"><CategoryIcon slug="alimento-perro" /></span> Concentrados en bulto para perros y gatos
               </li>
             </ul>
             <div className="wholesale__actions">
@@ -88,9 +87,7 @@ export function Spa() {
     <section className="section" id="spa" aria-labelledby="spaTitle">
       <div className="wrap">
         <div className="section__head">
-          <span className="kicker">
-            <SparkleIcon /> Spa canino y felino
-          </span>
+          <span className="kicker">Spa canino y felino</span>
           <h2 id="spaTitle">
             Consiéntelo con un <em>buen baño</em>
           </h2>
@@ -100,9 +97,7 @@ export function Spa() {
         <div className="spa">
           <div className="spa__media">
             <img src="/img/spa.jpg" alt="Un cachorro recién bañado" width={960} height={758} loading="lazy" />
-            <div className="spa__sticker">
-              <span aria-hidden="true">🛁</span> Perros y gatos
-            </div>
+            <div className="spa__sticker">Perros y gatos</div>
           </div>
 
           <div className="form-card">
@@ -113,7 +108,7 @@ export function Spa() {
             <div className="seg" role="radiogroup" aria-label="Tipo de mascota">
               {(['Perro', 'Gato'] as const).map((p) => (
                 <button key={p} type="button" role="radio" aria-checked={req.pet === p} className={req.pet === p ? 'is-active' : ''} onClick={() => set({ pet: p })}>
-                  {p === 'Perro' ? '🐶' : '🐱'} {p}
+                  {p}
                 </button>
               ))}
             </div>
@@ -180,9 +175,7 @@ export function Brands({ onBrand }: { onBrand: (name: string) => void }) {
     <section className="section" id="marcas" aria-labelledby="brandsTitle">
       <div className="wrap">
         <div className="section__head">
-          <span className="kicker">
-            <PawIcon /> Marcas
-          </span>
+          <span className="kicker">Marcas</span>
           <h2 id="brandsTitle">
             Las marcas que <em>ya conoces</em>
           </h2>
@@ -209,9 +202,7 @@ export function HowToBuy() {
     <section className="section" aria-labelledby="howTitle">
       <div className="wrap">
         <div className="section__head">
-          <span className="kicker">
-            <TruckIcon /> Así de fácil
-          </span>
+          <span className="kicker">Así de fácil</span>
           <h2 id="howTitle">
             Cómo <em>comprar</em>
           </h2>
@@ -267,9 +258,7 @@ export function Visit() {
     <section className="section" id="visitanos" aria-labelledby="visitTitle">
       <div className="wrap">
         <div className="section__head">
-          <span className="kicker">
-            <PinIcon /> Visítanos
-          </span>
+          <span className="kicker">Visítanos</span>
           <h2 id="visitTitle">
             Te esperamos en la <em>tienda</em>
           </h2>
