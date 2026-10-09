@@ -157,43 +157,48 @@ p { margin: 0; }
 .hero__lead { max-width: 52ch; margin: 14px auto 0; text-align: center; color: var(--muted); font-size: clamp(16px, 2vw, 19px); }
 
 .hero__grid {
-  display: grid; gap: 12px; margin-top: 18px;
+  display: grid; gap: 12px; margin-top: 22px;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-areas:
-    'photo photo'
     'cta cta'
     'pa pc'
     'left right';
 }
-/* Efecto 3D: la mascota (recorte sin fondo) queda DETRÁS del panel, que le tapa el pecho. */
-.hero__photo { grid-area: photo; justify-self: center; position: relative; z-index: 1; width: min(290px, 74vw); margin: 0 0 -96px; }
-.hero__photo img { display: block; width: 100%; height: auto; filter: drop-shadow(0 24px 30px rgb(16 41 90 / .16)); }
+/* Efecto 3D "rompe el marco": la mascota (recorte sin fondo) va DELANTE del panel.
+   Se recorta solo en el borde inferior del panel, así la cabeza sale por arriba. */
+.hero__box {
+  position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: flex-end; min-width: 0;
+  min-height: 160px; margin-top: 64px; border-radius: var(--radius); background: var(--sky); text-align: center;
+}
+.hero__box--a { grid-area: pa; }
+.hero__box--c { grid-area: pc; }
+.hero__box--cta { grid-area: cta; min-height: 250px; margin-top: 150px; background: var(--navy); color: #fff; }
+.hero__pop {
+  position: absolute; z-index: 1; left: 50%; bottom: 0; transform: translateX(-50%); height: auto; pointer-events: none;
+  width: 96%; max-width: 280px;
+  clip-path: inset(-300% -300% 0 -300%);
+  filter: drop-shadow(0 16px 22px rgb(16 41 90 / .22));
+}
+.hero__box--c .hero__pop { width: 112%; }
+.hero__box--cta .hero__pop { width: 86%; max-width: 330px; }
+.hero__box-text {
+  position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 60px 12px 16px; border-radius: 0 0 var(--radius) var(--radius);
+  background: linear-gradient(to top, var(--sky) 45%, rgb(227 234 243 / .85) 70%, rgb(227 234 243 / 0));
+}
+.hero__box-text strong { font-family: var(--display); font-weight: 700; font-size: clamp(16px, 2.4vw, 24px); line-height: 1.1; letter-spacing: -.03em; color: var(--navy); }
+.hero__box-text span { font-size: 12.5px; color: var(--muted); line-height: 1.35; }
+.hero__box--cta .hero__box-text {
+  gap: 12px; padding: 110px 20px 24px;
+  background: linear-gradient(to top, var(--navy) 48%, rgb(16 41 90 / .8) 72%, rgb(16 41 90 / 0));
+}
+.hero__box--cta h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 600; letter-spacing: -.03em; }
+.hero__box--cta p { color: rgb(255 255 255 / .75); font-size: 14.5px; margin-top: -6px; }
 .hero__photo-tag {
-  position: absolute; right: -6px; top: 3%; display: flex; align-items: center; gap: 6px;
+  position: absolute; z-index: 3; right: 2%; top: -110px; display: flex; align-items: center; gap: 6px;
   padding: 8px 14px; border-radius: 999px; background: #fff; color: var(--ink);
   font-weight: 600; font-size: 12.5px; box-shadow: var(--shadow); white-space: nowrap;
 }
-
-.hero__cta {
-  grid-area: cta; position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 16px;
-  padding: 30px 20px 28px; border-radius: var(--radius); background: var(--navy); color: #fff; text-align: center;
-}
-.hero__cta h2 { font-size: clamp(24px, 3.2vw, 32px); font-weight: 600; letter-spacing: -.03em; }
-.hero__cta p { color: rgb(255 255 255 / .75); font-size: 15px; margin-top: -8px; }
-
-.hero__slot { position: relative; display: flex; min-width: 0; margin-top: 96px; }
-.hero__slot--a { grid-area: pa; }
-.hero__slot--c { grid-area: pc; }
-.hero__pet {
-  position: absolute; z-index: 1; left: 50%; bottom: calc(100% - 40px); transform: translateX(-50%);
-  width: 74%; max-width: 260px; height: auto; filter: drop-shadow(0 14px 18px rgb(16 41 90 / .14));
-}
-.hero__panel {
-  position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
-  padding: 22px 14px 20px; border-radius: var(--radius); background: var(--sky); text-align: center;
-}
-.hero__panel strong { font-family: var(--display); font-weight: 700; font-size: clamp(17px, 2.6vw, 26px); line-height: 1.1; letter-spacing: -.03em; color: var(--navy); }
-.hero__panel span { font-size: 13px; color: var(--muted); line-height: 1.35; }
 
 .hero__card {
   display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px; text-align: center;
@@ -631,9 +636,12 @@ textarea.field { height: auto; min-height: 84px; padding: 12px 16px; resize: ver
   .wholesale { padding: 40px; }
   .wholesale__actions { grid-template-columns: 1fr 1fr; }
   .cart-pill__total { display: inline; }
-  .hero__photo { width: 340px; margin-bottom: -120px; }
-  .hero__slot { margin-top: 130px; }
-  .hero__pet { width: 62%; bottom: calc(100% - 52px); }
+  .hero__box { min-height: 200px; margin-top: 110px; }
+  .hero__box--cta { min-height: 280px; margin-top: 200px; }
+  .hero__box .hero__pop { width: 74%; }
+  .hero__box--c .hero__pop { width: 92%; }
+  .hero__box--cta .hero__pop { width: 70%; max-width: 400px; }
+  .hero__photo-tag { top: -160px; right: 8%; }
   .sheet { align-items: center; padding: 24px; }
   .sheet__panel { border-radius: 28px; transform: translateY(24px) scale(.97); opacity: 0; transition: transform .3s var(--ease), opacity .2s; max-height: min(860px, 92dvh); }
   .sheet.is-open .sheet__panel { transform: none; opacity: 1; }
@@ -660,13 +668,25 @@ textarea.field { height: auto; min-height: 84px; padding: 12px 16px; resize: ver
 
   .hero { padding-top: 26px; }
   .hero__grid {
-    grid-template-columns: 1fr 1.1fr 1fr; gap: 0; margin-top: 34px;
+    grid-template-columns: 1fr 1.1fr 1fr; grid-template-rows: minmax(250px, auto) auto; gap: 0; margin-top: 30px;
     grid-template-areas:
-      'left photo right'
+      'left . right'
       'pa cta pc';
   }
-  .hero__photo { width: 100%; max-width: 420px; margin: 0 auto -150px; align-self: end; }
-  .hero__photo-tag { right: -40px; top: 6%; }
+  .hero__box, .hero__box--cta { margin-top: 0; min-height: 270px; border-radius: 0; }
+  .hero__box--a, .hero__box--a .hero__box-text { border-radius: var(--radius) 0 0 var(--radius); }
+  .hero__box--c, .hero__box--c .hero__box-text { border-radius: 0 var(--radius) var(--radius) 0; }
+  .hero__box--a .hero__box-text { border-top-left-radius: 0; }
+  .hero__box--c .hero__box-text { border-top-right-radius: 0; }
+  .hero__box--cta .hero__box-text { border-radius: 0; }
+  .hero__box .hero__pop { width: 78%; max-width: 330px; }
+  .hero__box--c .hero__pop { width: 100%; max-width: 400px; }
+  .hero__box--cta .hero__pop { width: 104%; max-width: 480px; }
+  .hero__box-text { padding: 70px 24px 28px; }
+  .hero__box--cta .hero__box-text { padding: 90px 28px 30px; }
+  .hero__photo-tag { top: -250px; right: -10%; }
+  .hero__grid { grid-template-rows: minmax(300px, auto) auto; }
+
   /* Tarjetas laterales compactas: foto pequeña + texto, arriba, para dejar espacio a las mascotas */
   .hero__card {
     align-self: start; margin-top: 30px; max-width: 290px; padding: 10px; gap: 2px 14px; text-align: left;
@@ -679,12 +699,6 @@ textarea.field { height: auto; min-height: 84px; padding: 12px 16px; resize: ver
   .hero__card-go svg { width: 14px; height: 14px; }
   .hero__card-kicker { margin-top: 6px; }
   .hero__card-price { font-size: 19px !important; align-self: end; margin-bottom: 4px; }
-  .hero__cta { padding: 48px 28px 40px; border-radius: 0; justify-content: center; }
-  .hero__slot { margin-top: 0; }
-  .hero__slot--a .hero__panel { border-radius: var(--radius) 0 0 var(--radius); }
-  .hero__slot--c .hero__panel { border-radius: 0 var(--radius) var(--radius) 0; }
-  .hero__panel { padding: 40px 24px 36px; justify-content: flex-end; }
-  .hero__pet { width: 58%; max-width: 270px; bottom: calc(100% - 64px); }
 
   .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
   .cat { flex-basis: calc(20% - 8.5px); flex-direction: column; text-align: center; padding: 16px 10px; }
@@ -723,10 +737,6 @@ textarea.field { height: auto; min-height: 84px; padding: 12px 16px; resize: ver
   .brand__text span { display: none; }
 }
 
-/* El gato del recorte es más ancho que alto: se agranda un poco para que se asome igual que el perro */
-.hero__slot--c .hero__pet { width: 84%; bottom: calc(100% - 30px); }
-@media (min-width: 640px) { .hero__slot--c .hero__pet { width: 70%; bottom: calc(100% - 40px); } }
-@media (min-width: 1024px) { .hero__slot--c .hero__pet { width: 66%; max-width: 300px; bottom: calc(100% - 44px); } }
 
 /* Tableta: tarjetas laterales compactas (foto pequeña + texto) */
 @media (min-width: 640px) and (max-width: 1023px) {
@@ -736,4 +746,16 @@ textarea.field { height: auto; min-height: 84px; padding: 12px 16px; resize: ver
   .hero__card-go svg { width: 14px; height: 14px; }
   .hero__card-kicker { margin-top: 6px; }
   .hero__card-price { font-size: 19px !important; align-self: end; margin-bottom: 4px; }
+}
+
+/* Celular: paneles laterales más altos y menos degradado para que la mascota se vea completa */
+@media (max-width: 639px) {
+  .hero__box { min-height: 200px; margin-top: 70px; }
+  .hero__box .hero__pop { width: 112%; max-width: 240px; }
+  .hero__box--c .hero__pop { width: 126%; max-width: 270px; }
+  .hero__box-text { padding: 34px 10px 14px; background: linear-gradient(to top, var(--sky) 62%, rgb(227 234 243 / 0)); }
+  .hero__box--cta { min-height: 280px; margin-top: 140px; }
+  .hero__box--cta .hero__pop { width: 92%; max-width: 340px; }
+  .hero__box--cta .hero__box-text { padding: 70px 18px 24px; background: linear-gradient(to top, var(--navy) 60%, rgb(16 41 90 / 0)); }
+  .hero__photo-tag { top: -120px; }
 }

@@ -47,12 +47,6 @@ export function Hero({ onOpen, onShopAll }: { onOpen: (p: Product) => void; onSh
             </button>
           )}
 
-          {/* Recorte sin fondo: el panel azul de abajo le tapa el pecho y parece que se asoma. */}
-          <figure className="hero__photo">
-            <img src="/img/hero-perro.webp" alt="Un golden retriever" width={620} height={762} />
-            <figcaption className="hero__photo-tag">Al por mayor y al detal</figcaption>
-          </figure>
-
           <a className="hero__card hero__card--right" href="#spa">
             <span className="hero__card-media">
               <img src="/img/gato-azul.jpg" alt="" width={640} height={640} loading="lazy" />
@@ -65,32 +59,34 @@ export function Hero({ onOpen, onShopAll }: { onOpen: (p: Product) => void; onSh
             <span className="hero__card-price" style={{ fontSize: 17 }}>Agenda tu cita</span>
           </a>
 
-          <div className="hero__slot hero__slot--a">
-            <img className="hero__pet" src="/img/peek-perro.webp" alt="" width={460} height={460} />
-            <div className="hero__panel">
+          {/* Efecto 3D "rompe el marco": la mascota va DELANTE del panel; el cuerpo queda dentro
+              y la cabeza sale por arriba. El texto va abajo, sobre un degradado del color del panel. */}
+          <div className="hero__box hero__box--a">
+            <img className="hero__pop" src="/img/peek-perro.webp" alt="" width={460} height={609} />
+            <div className="hero__box-text">
               <strong>{settings.deliveryNote || 'Domicilios'}</strong>
               <span>Pide desde tu celular y te lo llevamos a casa.</span>
             </div>
           </div>
 
-          <div className="hero__cta">
-            <h2>
-              Lo mejor para
-              <br />
-              tu mascota
-            </h2>
-            <p>{products.length} productos para pedir desde tu celular</p>
-            <button type="button" className="btn btn--orange btn--pill-arrow" onClick={onShopAll}>
-              Ver la tienda
-              <span className="btn__arrow" aria-hidden="true">
-                <ArrowRightIcon />
-              </span>
-            </button>
+          <div className="hero__box hero__box--cta">
+            <img className="hero__pop" src="/img/hero-perro.webp" alt="Un golden retriever" width={620} height={762} />
+            <span className="hero__photo-tag">Al por mayor y al detal</span>
+            <div className="hero__box-text">
+              <h2>Lo mejor para tu mascota</h2>
+              <p>{products.length} productos para pedir desde tu celular</p>
+              <button type="button" className="btn btn--orange btn--pill-arrow" onClick={onShopAll}>
+                Ver la tienda
+                <span className="btn__arrow" aria-hidden="true">
+                  <ArrowRightIcon />
+                </span>
+              </button>
+            </div>
           </div>
 
-          <div className="hero__slot hero__slot--c">
-            <img className="hero__pet" src="/img/peek-gato.webp" alt="" width={480} height={364} />
-            <div className="hero__panel">
+          <div className="hero__box hero__box--c">
+            <img className="hero__pop" src="/img/peek-gato.webp" alt="" width={480} height={467} />
+            <div className="hero__box-text">
               <strong>Distribuidores de arena</strong>
               <span>Arena para gatos al por mayor y al detal.</span>
             </div>
