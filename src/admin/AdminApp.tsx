@@ -44,7 +44,7 @@ export default function AdminApp() {
 
   useEffect(() => {
     document.body.classList.add('admin');
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0c3474');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#23262f');
     return () => document.body.classList.remove('admin');
   }, []);
 
