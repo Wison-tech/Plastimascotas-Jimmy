@@ -9,3 +9,6 @@ Thumbs.db
 
 # Documentos de negocio (precios, propuestas): no van al repo público
 negocio/
+
+# Variables de Supabase: se configuran en Cloudflare (Environment variables), no en el repo
+.env.production
